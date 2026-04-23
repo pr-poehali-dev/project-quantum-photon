@@ -1,5 +1,4 @@
 import { Shader, ChromaFlow, Swirl } from "shaders/react"
-import { CustomCursor } from "@/components/custom-cursor"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { WorkSection } from "@/components/sections/work-section"
 import { ServicesSection } from "@/components/sections/services-section"
@@ -12,8 +11,6 @@ export default function Index() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
-  const touchStartY = useRef(0)
-  const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
   const scrollThrottleRef = useRef<number>()
 
@@ -49,89 +46,14 @@ export default function Index() {
 
   const scrollToSection = (index: number) => {
     if (scrollContainerRef.current) {
-      const sectionWidth = scrollContainerRef.current.offsetWidth
+      const sectionHeight = window.innerHeight
       scrollContainerRef.current.scrollTo({
-        left: sectionWidth * index,
+        top: sectionHeight * index,
         behavior: "smooth",
       })
       setCurrentSection(index)
     }
   }
-
-  useEffect(() => {
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY
-      touchStartX.current = e.touches[0].clientX
-    }
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (Math.abs(e.touches[0].clientY - touchStartY.current) > 10) {
-        e.preventDefault()
-      }
-    }
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY
-      const touchEndX = e.changedTouches[0].clientX
-      const deltaY = touchStartY.current - touchEndY
-      const deltaX = touchStartX.current - touchEndX
-
-      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
-        if (deltaY > 0 && currentSection < 4) {
-          scrollToSection(currentSection + 1)
-        } else if (deltaY < 0 && currentSection > 0) {
-          scrollToSection(currentSection - 1)
-        }
-      }
-    }
-
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener("touchstart", handleTouchStart, { passive: true })
-      container.addEventListener("touchmove", handleTouchMove, { passive: false })
-      container.addEventListener("touchend", handleTouchEnd, { passive: true })
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("touchstart", handleTouchStart)
-        container.removeEventListener("touchmove", handleTouchMove)
-        container.removeEventListener("touchend", handleTouchEnd)
-      }
-    }
-  }, [currentSection])
-
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault()
-
-        if (!scrollContainerRef.current) return
-
-        scrollContainerRef.current.scrollBy({
-          left: e.deltaY,
-          behavior: "instant",
-        })
-
-        const sectionWidth = scrollContainerRef.current.offsetWidth
-        const newSection = Math.round(scrollContainerRef.current.scrollLeft / sectionWidth)
-        if (newSection !== currentSection) {
-          setCurrentSection(newSection)
-        }
-      }
-    }
-
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false })
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("wheel", handleWheel)
-      }
-    }
-  }, [currentSection])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -143,9 +65,9 @@ export default function Index() {
           return
         }
 
-        const sectionWidth = scrollContainerRef.current.offsetWidth
-        const scrollLeft = scrollContainerRef.current.scrollLeft
-        const newSection = Math.round(scrollLeft / sectionWidth)
+        const sectionHeight = window.innerHeight
+        const scrollTop = scrollContainerRef.current.scrollTop
+        const newSection = Math.round(scrollTop / sectionHeight)
 
         if (newSection !== currentSection && newSection >= 0 && newSection <= 4) {
           setCurrentSection(newSection)
@@ -248,16 +170,28 @@ export default function Index() {
         </MagneticButton>
       </nav>
 
+      {/* Dots navigation */}
+      <div className={`fixed right-6 top-1/2 z-50 flex -translate-y-1/2 flex-col gap-2 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <button
+            key={i}
+            onClick={() => scrollToSection(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              currentSection === i ? "w-6 bg-foreground" : "w-1.5 bg-foreground/30 hover:bg-foreground/60"
+            }`}
+          />
+        ))}
+      </div>
+
       <div
         ref={scrollContainerRef}
-        data-scroll-container
-        className={`relative z-10 flex h-screen overflow-x-auto overflow-y-hidden transition-opacity duration-700 ${
+        className={`relative z-10 h-screen overflow-y-auto overflow-x-hidden transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "y mandatory" }}
       >
         {/* Hero Section */}
-        <section className="relative flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
+        <section className="relative flex min-h-screen w-full shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24" style={{ scrollSnapAlign: "start" }}>
           <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden opacity-30 md:opacity-40">
             <img
               src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
@@ -281,11 +215,7 @@ export default function Index() {
               </span>
             </p>
             <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton
-                size="lg"
-                variant="primary"
-                onClick={() => scrollToSection(1)}
-              >
+              <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection(1)}>
                 Смотреть историю
               </MagneticButton>
               <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(2)}>
@@ -308,25 +238,23 @@ export default function Index() {
           </div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
-            <div className="flex items-center gap-2">
-              <p className="font-mono text-xs text-foreground/80">Листайте вправо</p>
-              <div className="flex h-6 w-12 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-foreground/80" />
+            <div className="flex flex-col items-center gap-2">
+              <p className="font-mono text-xs text-foreground/80">Листайте вниз</p>
+              <div className="flex h-8 w-6 items-start justify-center rounded-full border border-foreground/20 bg-foreground/15 px-1 pt-1.5 backdrop-blur-md">
+                <div className="h-2 w-1 animate-bounce rounded-full bg-foreground/80" />
               </div>
             </div>
           </div>
         </section>
 
-        <WorkSection />
-        <ServicesSection />
-        <AboutSection scrollToSection={scrollToSection} />
-        <ContactSection />
+        <div style={{ scrollSnapAlign: "start" }}><WorkSection /></div>
+        <div style={{ scrollSnapAlign: "start" }}><ServicesSection /></div>
+        <div style={{ scrollSnapAlign: "start" }}><AboutSection scrollToSection={scrollToSection} /></div>
+        <div style={{ scrollSnapAlign: "start" }}><ContactSection /></div>
       </div>
 
       <style>{`
-        div::-webkit-scrollbar {
-          display: none;
-        }
+        div::-webkit-scrollbar { display: none; }
       `}</style>
     </main>
   )
