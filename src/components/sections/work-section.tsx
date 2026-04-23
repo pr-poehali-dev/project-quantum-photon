@@ -60,15 +60,15 @@ export function WorkSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-start overflow-y-auto px-6 pt-24 md:px-12 lg:px-16"
+      className="w-full px-4 pb-16 pt-20 md:px-12 md:pt-24 lg:px-16"
     >
-      <div className="mx-auto w-full max-w-7xl pb-16">
+      <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-10 transition-all duration-700 md:mb-14 ${
+          className={`mb-8 transition-all duration-700 md:mb-14 ${
             isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
           }`}
         >
-          <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h2 className="mb-2 font-sans text-4xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Эпохи VR
           </h2>
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Ключевые периоды развития</p>
@@ -118,7 +118,7 @@ function EpochCard({
     >
       <button
         onClick={onToggle}
-        className="group flex w-full items-center justify-between py-6 text-left md:py-7"
+        className="group flex w-full items-center justify-between py-4 text-left md:py-7"
       >
         <div className="flex items-baseline gap-4 md:gap-8">
           <span className="font-mono text-sm text-foreground/30 transition-colors group-hover:text-foreground/50 md:text-base">
@@ -126,7 +126,7 @@ function EpochCard({
           </span>
           <div>
             <div className="flex items-baseline gap-3">
-              <h3 className="font-sans text-2xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-1 md:text-3xl lg:text-4xl">
+              <h3 className="font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-1 md:text-3xl lg:text-4xl">
                 {epoch.title}
               </h3>
               <span className="font-mono text-xs text-foreground/40 md:text-sm">{epoch.period}</span>
@@ -147,19 +147,19 @@ function EpochCard({
 
       <div
         className={`overflow-hidden transition-all duration-500 ${
-          isExpanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          isExpanded ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="grid gap-6 pb-8 md:grid-cols-[1fr_1.6fr] md:gap-10">
+        <div className="grid gap-4 pb-6 md:grid-cols-[1fr_1.6fr] md:gap-10 md:pb-8">
           <div className="overflow-hidden rounded-xl">
             <img
               src={epoch.image}
               alt={epoch.title}
-              className="h-48 w-full object-cover opacity-80 transition-transform duration-700 hover:scale-105 md:h-56"
+              className="h-40 w-full object-cover opacity-80 transition-transform duration-700 hover:scale-105 md:h-56"
             />
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             <div>
               <p className="mb-3 text-sm leading-relaxed text-foreground/80 md:text-base">{epoch.description}</p>
               <p className="font-mono text-xs text-foreground/40">/ Ключевые устройства</p>

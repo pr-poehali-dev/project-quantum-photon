@@ -58,21 +58,21 @@ export function ServicesSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="w-full px-4 pb-16 pt-20 md:px-12 md:pt-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-10 transition-all duration-700 md:mb-14 ${
+          className={`mb-8 transition-all duration-700 md:mb-14 ${
             isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
           }`}
         >
-          <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h2 className="mb-2 font-sans text-4xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Технологии
           </h2>
           <p className="font-mono text-sm text-foreground/60 md:text-base">/ Как устроен виртуальный мир</p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-10 lg:gap-x-20">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-x-16 md:gap-y-10 lg:gap-x-20">
           {TECHNOLOGIES.map((tech, i) => (
             <ServiceCard key={i} tech={tech} index={i} isVisible={isVisible} />
           ))}

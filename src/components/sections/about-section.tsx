@@ -7,7 +7,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-16 md:px-12 lg:px-16"
+      className="w-full px-4 pb-16 pt-20 md:px-12 md:pt-24 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-6 md:grid-cols-2 md:gap-12 lg:gap-20">
@@ -49,7 +49,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           </div>
 
           {/* Right side - Stats */}
-          <div className="flex flex-col justify-center space-y-4 md:space-y-6">
+          <div className="grid grid-cols-2 gap-4 md:flex md:flex-col md:justify-center md:space-y-6">
             {[
               { value: "1962", label: "Первый симулятор", sublabel: "Sensorama Мортона Хейлига", direction: "right" },
               { value: "60+", label: "Лет истории", sublabel: "Непрерывной эволюции технологий", direction: "left" },
@@ -66,14 +66,10 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               return (
                 <div
                   key={i}
-                  className={`flex items-baseline gap-4 border-l border-foreground/30 pl-4 transition-all duration-700 md:pl-6 ${getRevealClass()}`}
-                  style={{
-                    transitionDelay: `${300 + i * 150}ms`,
-                    marginLeft: i % 2 === 0 ? "0" : "auto",
-                    maxWidth: i % 2 === 0 ? "100%" : "85%",
-                  }}
+                  className={`flex items-baseline gap-2 border-l border-foreground/30 pl-3 transition-all duration-700 md:pl-6 ${getRevealClass()}`}
+                  style={{ transitionDelay: `${300 + i * 150}ms` }}
                 >
-                  <div className="text-3xl font-light text-foreground md:text-5xl">{stat.value}</div>
+                  <div className="text-2xl font-light text-foreground md:text-5xl">{stat.value}</div>
                   <div>
                     <div className="font-sans text-sm font-light text-foreground md:text-base">{stat.label}</div>
                     <div className="font-mono text-xs text-foreground/60">{stat.sublabel}</div>

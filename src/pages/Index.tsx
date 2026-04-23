@@ -3,7 +3,7 @@ import { GrainOverlay } from "@/components/grain-overlay"
 import { WorkSection } from "@/components/sections/work-section"
 import { ServicesSection } from "@/components/sections/services-section"
 import { AboutSection } from "@/components/sections/about-section"
-import { ContactSection } from "@/components/sections/contact-section"
+import { UsageSection } from "@/components/sections/usage-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
 
@@ -132,7 +132,7 @@ export default function Index() {
       </div>
 
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 ${
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-4 py-4 transition-opacity duration-700 md:px-12 md:py-6 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -140,10 +140,10 @@ export default function Index() {
           onClick={() => scrollToSection(0)}
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
-            <span className="font-sans text-xl font-bold text-foreground">VR</span>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:bg-foreground/25 md:h-10 md:w-10">
+            <span className="font-sans text-sm font-bold text-foreground md:text-xl">VR</span>
           </div>
-          <span className="font-sans text-xl font-semibold tracking-tight text-foreground">VR История</span>
+          <span className="font-sans text-base font-semibold tracking-tight text-foreground md:text-xl">VR История</span>
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -168,7 +168,7 @@ export default function Index() {
       </nav>
 
       {/* Dots navigation */}
-      <div className={`fixed right-6 top-1/2 z-50 flex -translate-y-1/2 flex-col gap-2 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
+      <div className={`fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-2 transition-opacity duration-700 md:flex ${isLoaded ? "opacity-100" : "opacity-0"}`}>
         {[0, 1, 2, 3].map((i) => (
           <button
             key={i}
@@ -188,7 +188,7 @@ export default function Index() {
         style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(255,255,255,0.2) transparent" }}
       >
         {/* Hero Section */}
-        <section className="relative flex min-h-screen w-full shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
+        <section className="relative flex min-h-screen w-full shrink-0 flex-col justify-end px-4 pb-12 pt-20 md:px-12 md:pb-24">
           <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden opacity-30 md:opacity-40">
             <img
               src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
@@ -201,12 +201,12 @@ export default function Index() {
             <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
               <p className="font-mono text-xs text-foreground/90">От 1962 года до наших дней</p>
             </div>
-            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
+            <h1 className="mb-4 animate-in fade-in slide-in-from-bottom-8 font-sans text-4xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:mb-6 md:text-7xl lg:text-8xl">
               <span className="text-balance">
                 История игр виртуальной реальности
               </span>
             </h1>
-            <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
+            <p className="mb-6 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-sm leading-relaxed text-foreground/90 duration-1000 delay-200 md:mb-8 md:text-xl">
               <span className="text-pretty">
                 Путешествие сквозь десятилетия: от первых симуляторов до метавселенных. Как VR изменило игровую индустрию навсегда.
               </span>
@@ -220,7 +220,7 @@ export default function Index() {
               </MagneticButton>
             </div>
 
-            <div className="mt-10 flex animate-in fade-in slide-in-from-bottom-4 gap-8 border-t border-foreground/10 pt-8 duration-1000 delay-500 sm:gap-12">
+            <div className="mt-6 flex animate-in fade-in slide-in-from-bottom-4 gap-6 border-t border-foreground/10 pt-6 duration-1000 delay-500 md:mt-10 md:gap-12 md:pt-8">
               {[
                 { value: "4 эпохи", label: "развития VR" },
                 { value: "60+ лет", label: "истории технологий" },
@@ -246,6 +246,7 @@ export default function Index() {
 
         <WorkSection />
         <ServicesSection />
+        <UsageSection />
         <AboutSection scrollToSection={scrollToSection} />
       </div>
 
