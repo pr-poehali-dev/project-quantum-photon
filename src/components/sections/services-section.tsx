@@ -5,10 +5,11 @@ const TECHNOLOGIES = [
   {
     title: "Дисплеи и оптика",
     description: "От ЭЛТ-экранов 90-х до современных микро-OLED с частотой 120 Гц и широким полем зрения",
+    detail: "Первые VR-шлемы использовали тяжёлые ЭЛТ-мониторы с задержкой 50+ мс — это вызывало тошноту. Сегодня микро-OLED дисплеи дают задержку менее 2 мс, что делает VR комфортным даже при длительных сессиях.",
     icon: "Eye",
     direction: "top",
     progress: 92,
-    facts: ["120 Гц — стандарт 2024 года", "110° поле зрения", "4K на глаз в топ-устройствах"],
+    facts: ["120 Гц — стандарт 2024 года", "110° поле зрения", "4K на глаз в топ-устройствах", "< 2 мс задержка"],
     from: "ЭЛТ, 60 Гц",
     to: "микро-OLED, 120 Гц",
     image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/154cdeb1-98e7-459d-b732-863df5acdaf5.jpg",
@@ -16,10 +17,11 @@ const TECHNOLOGIES = [
   {
     title: "Трекинг движений",
     description: "Эволюция от механических джойстиков до inside-out трекинга без внешних датчиков",
+    detail: "Ранние системы требовали комнаты, увешанной датчиками. Технология inside-out tracking использует камеры прямо на шлеме и нейросети для отслеживания рук и тела — без единого внешнего устройства.",
     icon: "Crosshair",
     direction: "right",
     progress: 78,
-    facts: ["Sub-millimeter точность", "Трекинг рук без контроллеров", "6DoF — 6 степеней свободы"],
+    facts: ["Sub-millimeter точность", "Трекинг рук без контроллеров", "6DoF — 6 степеней свободы", "Eye-tracking встроен"],
     from: "Механика, кабели",
     to: "Inside-out, AI",
     image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/323e4463-b738-4b7c-a1cf-cec64062474b.jpg",
@@ -27,10 +29,11 @@ const TECHNOLOGIES = [
   {
     title: "Игровые движки",
     description: "Unreal Engine и Unity как основа VR-разработки: физика, рендеринг, оптимизация",
+    detail: "VR требует рендеринга двух кадров одновременно (по одному на каждый глаз) при 90+ FPS — это огромная нагрузка. Foveated rendering решает проблему: движок рендерит в высоком качестве только зону взгляда, периферию — в низком.",
     icon: "Cpu",
     direction: "left",
     progress: 85,
-    facts: ["Foveated rendering экономит 40% GPU", "Haptic feedback в перчатках", "Ray tracing в реальном времени"],
+    facts: ["Foveated rendering экономит 40% GPU", "Haptic feedback в перчатках", "Ray tracing в реальном времени", "90+ FPS обязательно"],
     from: "OpenGL, 30 FPS",
     to: "Unreal 5, Ray Tracing",
     image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/631f7bd7-a390-4ca3-9504-861d4d6aa683.jpg",
@@ -38,10 +41,11 @@ const TECHNOLOGIES = [
   {
     title: "Социальный VR",
     description: "Метавселенные, многопользовательские пространства и будущее цифрового присутствия",
+    detail: "VRChat ежемесячно посещают более 4 млн пользователей. Horizon Worlds от Meta — попытка создать рабочее пространство в VR. Концерты Travis Scott в Fortnite и выступления в VR собирают миллионы зрителей.",
     icon: "Users",
     direction: "bottom",
     progress: 55,
-    facts: ["Horizon Worlds, VRChat, Rec Room", "Аватары с мимикой лица", "Виртуальные концерты и конференции"],
+    facts: ["4M+ пользователей VRChat", "Аватары с мимикой лица", "Виртуальные концерты и конференции", "VR-офисы уже реальность"],
     from: "Одиночный опыт",
     to: "Метавселенная",
     image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/1a668929-c64d-4538-b711-f68c1b92e8c7.jpg",
@@ -121,7 +125,8 @@ function ServiceCard({
       </div>
 
       <h3 className="mb-1.5 font-sans text-xl font-light text-foreground md:text-2xl">{tech.title}</h3>
-      <p className="mb-3 text-sm leading-relaxed text-foreground/70">{tech.description}</p>
+      <p className="mb-2 text-sm leading-relaxed text-foreground/80">{tech.description}</p>
+      <p className="mb-3 text-xs leading-relaxed text-foreground/50">{tech.detail}</p>
 
       <div className="mb-3">
         <div className="mb-1.5 flex justify-between font-mono text-xs text-foreground/40">

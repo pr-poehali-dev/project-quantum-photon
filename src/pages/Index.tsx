@@ -292,6 +292,19 @@ export default function Index() {
                 Технологии
               </MagneticButton>
             </div>
+
+            <div className="mt-10 flex animate-in fade-in slide-in-from-bottom-4 gap-8 border-t border-foreground/10 pt-8 duration-1000 delay-500 sm:gap-12">
+              {[
+                { value: "4 эпохи", label: "развития VR" },
+                { value: "60+ лет", label: "истории технологий" },
+                { value: "$40B", label: "объём рынка в 2026" },
+              ].map((stat) => (
+                <div key={stat.value}>
+                  <div className="font-sans text-xl font-light text-foreground md:text-2xl">{stat.value}</div>
+                  <div className="font-mono text-xs text-foreground/50">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">

@@ -97,6 +97,26 @@ export function ContactSection() {
                   </a>
                 ))}
               </div>
+
+              <div
+                className={`mt-6 space-y-3 border-t border-foreground/10 pt-6 transition-all duration-700 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
+                style={{ transitionDelay: "650ms" }}
+              >
+                <p className="font-mono text-xs text-foreground/40">/ Знаете ли вы</p>
+                {[
+                  "Термин «виртуальная реальность» придумал Джарон Ланье в 1987 году",
+                  "Первый VR-шлем весил более 50 кг и был прикреплён к потолку",
+                  "Half-Life: Alyx (2020) считается лучшей VR-игрой всех времён по версии Metacritic",
+                  "Apple Vision Pro обрабатывает 23 млн пикселей одновременно",
+                ].map((fact, i) => (
+                  <div key={i} className="flex gap-3">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-foreground/30" />
+                    <p className="text-xs leading-relaxed text-foreground/60">{fact}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

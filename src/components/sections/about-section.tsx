@@ -39,6 +39,12 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 Этот проект прослеживает путь VR-игр от механических симуляторов 1960-х до иммерсивных миров Meta Quest и Apple Vision Pro.
               </p>
+              <blockquote className="max-w-md border-l-2 border-foreground/30 pl-4 pt-2">
+                <p className="text-sm italic leading-relaxed text-foreground/60 md:text-base">
+                  «Виртуальная реальность — это технология, которая позволяет нам разделить внутренний мир воображения»
+                </p>
+                <footer className="mt-2 font-mono text-xs text-foreground/40">— Джарон Ланье, основоположник термина VR</footer>
+              </blockquote>
             </div>
 
             <div
@@ -60,7 +66,8 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
             {[
               { value: "1962", label: "Первый симулятор", sublabel: "Sensorama Мортона Хейлига", direction: "right" },
               { value: "60+", label: "Лет истории", sublabel: "Непрерывной эволюции технологий", direction: "left" },
-              { value: "$40B", label: "Рынок VR", sublabel: "Объём рынка к 2026 году", direction: "right" },
+              { value: "171M", label: "Пользователей VR", sublabel: "По всему миру в 2024 году", direction: "right" },
+              { value: "$40B", label: "Объём рынка", sublabel: "Прогноз на 2026 год", direction: "left" },
             ].map((stat, i) => {
               const getRevealClass = () => {
                 if (!isVisible) {
