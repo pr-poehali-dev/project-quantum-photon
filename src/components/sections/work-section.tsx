@@ -15,32 +15,32 @@ export function WorkSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Проекты
+            Эпохи VR
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Избранные работы</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Ключевые периоды развития</p>
         </div>
 
         <div className="space-y-6 md:space-y-8">
           {[
             {
               number: "01",
-              title: "ТехноСтарт",
-              category: "Корпоративный портал",
-              year: "2024",
+              title: "Пионеры (1960–1980)",
+              category: "Sensorama, The Sword of Damocles",
+              year: "1962",
               direction: "left",
             },
             {
               number: "02",
-              title: "АльфаТрейд",
-              category: "Финтех платформа",
-              year: "2024",
+              title: "Коммерческий старт (1990–е)",
+              category: "VPL Research, Virtuality, Nintendo Virtual Boy",
+              year: "1991",
               direction: "right",
             },
             {
               number: "03",
-              title: "МедиаПульс",
-              category: "Медиа сервис",
-              year: "2023",
+              title: "Современная эра (2012–н.в.)",
+              category: "Oculus Rift, HTC Vive, PlayStation VR, Meta Quest",
+              year: "2012",
               direction: "left",
             },
           ].map((project, i) => (

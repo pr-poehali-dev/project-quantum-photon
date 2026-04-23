@@ -15,31 +15,31 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Услуги
+            Технологии
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Наши компетенции</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Как устроен виртуальный мир</p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
-              title: "Веб-разработка",
-              description: "Создание современных веб-приложений любой сложности",
+              title: "Дисплеи и оптика",
+              description: "От ЭЛТ-экранов 90-х до современных микро-OLED с частотой 120 Гц и широким полем зрения",
               direction: "top",
             },
             {
-              title: "UI/UX Дизайн",
-              description: "Проектирование удобных и красивых интерфейсов",
+              title: "Трекинг движений",
+              description: "Эволюция от механических джойстиков до inside-out трекинга без внешних датчиков",
               direction: "right",
             },
             {
-              title: "Мобильные приложения",
-              description: "Кроссплатформенная разработка для iOS и Android",
+              title: "Игровые движки",
+              description: "Unreal Engine и Unity как основа VR-разработки: физика, рендеринг, оптимизация",
               direction: "left",
             },
             {
-              title: "Консалтинг",
-              description: "Техническая экспертиза и стратегическое планирование",
+              title: "Социальный VR",
+              description: "Метавселенные, многопользовательские пространства и будущее цифрового присутствия",
               direction: "bottom",
             },
           ].map((service, i) => (
