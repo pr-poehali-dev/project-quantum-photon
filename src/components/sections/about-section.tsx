@@ -14,7 +14,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           {/* Left side - Story */}
           <div>
             <div
-              className={`mb-6 transition-all duration-700 md:mb-12 ${
+              className={`mb-6 transition-all duration-700 md:mb-8 ${
                 isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
               }`}
             >
@@ -39,6 +39,19 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 Этот проект прослеживает путь VR-игр от механических симуляторов 1960-х до иммерсивных миров Meta Quest и Apple Vision Pro.
               </p>
+            </div>
+
+            <div
+              className={`mt-6 overflow-hidden rounded-xl transition-all duration-700 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <img
+                src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
+                alt="VR погружение"
+                className="h-48 w-full object-cover opacity-75 transition-transform duration-700 hover:scale-105 md:h-56"
+              />
             </div>
           </div>
 

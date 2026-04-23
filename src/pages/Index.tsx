@@ -257,8 +257,16 @@ export default function Index() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Hero Section */}
-        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
-          <div className="max-w-3xl">
+        <section className="relative flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
+          <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden opacity-30 md:opacity-40">
+            <img
+              src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
+              alt="VR experience"
+              className="h-full w-full object-cover"
+              style={{ maskImage: "linear-gradient(to right, transparent 0%, black 40%)" }}
+            />
+          </div>
+          <div className="relative max-w-3xl">
             <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
               <p className="font-mono text-xs text-foreground/90">От 1962 года до наших дней</p>
             </div>

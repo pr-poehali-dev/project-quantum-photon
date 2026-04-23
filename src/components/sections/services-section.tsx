@@ -11,6 +11,7 @@ const TECHNOLOGIES = [
     facts: ["120 Гц — стандарт 2024 года", "110° поле зрения", "4K на глаз в топ-устройствах"],
     from: "ЭЛТ, 60 Гц",
     to: "микро-OLED, 120 Гц",
+    image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/154cdeb1-98e7-459d-b732-863df5acdaf5.jpg",
   },
   {
     title: "Трекинг движений",
@@ -21,6 +22,7 @@ const TECHNOLOGIES = [
     facts: ["Sub-millimeter точность", "Трекинг рук без контроллеров", "6DoF — 6 степеней свободы"],
     from: "Механика, кабели",
     to: "Inside-out, AI",
+    image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/323e4463-b738-4b7c-a1cf-cec64062474b.jpg",
   },
   {
     title: "Игровые движки",
@@ -31,6 +33,7 @@ const TECHNOLOGIES = [
     facts: ["Foveated rendering экономит 40% GPU", "Haptic feedback в перчатках", "Ray tracing в реальном времени"],
     from: "OpenGL, 30 FPS",
     to: "Unreal 5, Ray Tracing",
+    image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/631f7bd7-a390-4ca3-9504-861d4d6aa683.jpg",
   },
   {
     title: "Социальный VR",
@@ -41,6 +44,7 @@ const TECHNOLOGIES = [
     facts: ["Horizon Worlds, VRChat, Rec Room", "Аватары с мимикой лица", "Виртуальные концерты и конференции"],
     from: "Одиночный опыт",
     to: "Метавселенная",
+    image: "https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/1a668929-c64d-4538-b711-f68c1b92e8c7.jpg",
   },
 ]
 
@@ -101,15 +105,23 @@ function ServiceCard({
       className={`group transition-all duration-700 ${getRevealClass()}`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
+      <div className="mb-3 overflow-hidden rounded-lg">
+        <img
+          src={tech.image}
+          alt={tech.title}
+          className="h-36 w-full object-cover opacity-70 transition-all duration-500 group-hover:opacity-90 group-hover:scale-105"
+        />
+      </div>
+
       <div className="mb-3 flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-md border border-foreground/20 bg-foreground/5 transition-all duration-300 group-hover:border-foreground/40 group-hover:bg-foreground/10">
-          <Icon name={tech.icon as "Eye"} size={15} className="text-foreground/70" />
+        <div className="flex h-7 w-7 items-center justify-center rounded-md border border-foreground/20 bg-foreground/5 transition-all duration-300 group-hover:border-foreground/40 group-hover:bg-foreground/10">
+          <Icon name={tech.icon as "Eye"} size={13} className="text-foreground/70" />
         </div>
         <span className="font-mono text-xs text-foreground/40">0{index + 1}</span>
       </div>
 
-      <h3 className="mb-1.5 font-sans text-2xl font-light text-foreground md:text-3xl">{tech.title}</h3>
-      <p className="mb-4 max-w-sm text-sm leading-relaxed text-foreground/70 md:text-base">{tech.description}</p>
+      <h3 className="mb-1.5 font-sans text-xl font-light text-foreground md:text-2xl">{tech.title}</h3>
+      <p className="mb-3 text-sm leading-relaxed text-foreground/70">{tech.description}</p>
 
       <div className="mb-3">
         <div className="mb-1.5 flex justify-between font-mono text-xs text-foreground/40">
