@@ -7,18 +7,18 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-20 md:px-12 md:pt-0 lg:px-16"
+      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-16 md:px-12 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-24">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-12 lg:gap-20">
           {/* Left side - Story */}
           <div>
             <div
-              className={`mb-6 transition-all duration-700 md:mb-8 ${
+              className={`mb-4 transition-all duration-700 ${
                 isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
               }`}
             >
-              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:mb-4 md:text-6xl lg:text-7xl">
+              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                 60 лет
                 <br />
                 в погоне
@@ -28,41 +28,28 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
             </div>
 
             <div
-              className={`space-y-3 transition-all duration-700 md:space-y-4 ${
+              className={`space-y-2 transition-all duration-700 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: "200ms" }}
             >
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p className="max-w-md text-sm leading-relaxed text-foreground/90">
                 Виртуальная реальность зародилась в лабораториях учёных-мечтателей задолго до появления интернета — и с тех пор не прекращает удивлять мир.
               </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
+              <p className="max-w-md text-sm leading-relaxed text-foreground/90">
                 Этот проект прослеживает путь VR-игр от механических симуляторов 1960-х до иммерсивных миров Meta Quest и Apple Vision Pro.
               </p>
-              <blockquote className="max-w-md border-l-2 border-foreground/30 pl-4 pt-2">
-                <p className="text-sm italic leading-relaxed text-foreground/60 md:text-base">
+              <blockquote className="max-w-md border-l-2 border-foreground/30 pl-4 pt-1">
+                <p className="text-xs italic leading-relaxed text-foreground/60">
                   «Виртуальная реальность — это технология, которая позволяет нам разделить внутренний мир воображения»
                 </p>
-                <footer className="mt-2 font-mono text-xs text-foreground/40">— Джарон Ланье, основоположник термина VR</footer>
+                <footer className="mt-1 font-mono text-xs text-foreground/40">— Джарон Ланье, основоположник термина VR</footer>
               </blockquote>
-            </div>
-
-            <div
-              className={`mt-6 overflow-hidden rounded-xl transition-all duration-700 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              }`}
-              style={{ transitionDelay: "400ms" }}
-            >
-              <img
-                src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
-                alt="VR погружение"
-                className="h-48 w-full object-cover opacity-75 transition-transform duration-700 hover:scale-105 md:h-56"
-              />
             </div>
           </div>
 
-          {/* Right side - Stats with creative layout */}
-          <div className="flex flex-col justify-center space-y-6 md:space-y-12">
+          {/* Right side - Stats */}
+          <div className="flex flex-col justify-center space-y-4 md:space-y-6">
             {[
               { value: "1962", label: "Первый симулятор", sublabel: "Sensorama Мортона Хейлига", direction: "right" },
               { value: "60+", label: "Лет истории", sublabel: "Непрерывной эволюции технологий", direction: "left" },
@@ -79,16 +66,16 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
               return (
                 <div
                   key={i}
-                  className={`flex items-baseline gap-4 border-l border-foreground/30 pl-4 transition-all duration-700 md:gap-8 md:pl-8 ${getRevealClass()}`}
+                  className={`flex items-baseline gap-4 border-l border-foreground/30 pl-4 transition-all duration-700 md:pl-6 ${getRevealClass()}`}
                   style={{
                     transitionDelay: `${300 + i * 150}ms`,
                     marginLeft: i % 2 === 0 ? "0" : "auto",
                     maxWidth: i % 2 === 0 ? "100%" : "85%",
                   }}
                 >
-                  <div className="text-3xl font-light text-foreground md:text-6xl lg:text-7xl">{stat.value}</div>
+                  <div className="text-3xl font-light text-foreground md:text-5xl">{stat.value}</div>
                   <div>
-                    <div className="font-sans text-base font-light text-foreground md:text-xl">{stat.label}</div>
+                    <div className="font-sans text-sm font-light text-foreground md:text-base">{stat.label}</div>
                     <div className="font-mono text-xs text-foreground/60">{stat.sublabel}</div>
                   </div>
                 </div>
@@ -98,7 +85,7 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
         </div>
 
         <div
-          className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
+          className={`mt-6 flex flex-wrap gap-3 transition-all duration-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
           style={{ transitionDelay: "750ms" }}
@@ -106,8 +93,8 @@ export function AboutSection({ scrollToSection }: { scrollToSection?: (index: nu
           <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection?.(1)}>
             Смотреть эпохи
           </MagneticButton>
-          <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(4)}>
-            Связаться
+          <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection?.(2)}>
+            Технологии
           </MagneticButton>
         </div>
       </div>
