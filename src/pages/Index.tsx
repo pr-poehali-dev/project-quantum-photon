@@ -188,10 +188,10 @@ export default function Index() {
         className={`relative z-10 h-screen overflow-y-auto overflow-x-hidden transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", scrollSnapType: "y mandatory" }}
+        style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(255,255,255,0.2) transparent" }}
       >
         {/* Hero Section */}
-        <section className="relative flex min-h-screen w-full shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24" style={{ scrollSnapAlign: "start" }}>
+        <section className="relative flex min-h-screen w-full shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
           <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden opacity-30 md:opacity-40">
             <img
               src="https://cdn.poehali.dev/projects/a2f24a3f-87d5-4a9a-ab95-0b1e2d28dbf5/files/871ab0ae-76db-4460-92d9-fcfbe16e1a36.jpg"
@@ -247,14 +247,16 @@ export default function Index() {
           </div>
         </section>
 
-        <div style={{ scrollSnapAlign: "start" }}><WorkSection /></div>
-        <div style={{ scrollSnapAlign: "start" }}><ServicesSection /></div>
-        <div style={{ scrollSnapAlign: "start" }}><AboutSection scrollToSection={scrollToSection} /></div>
-        <div style={{ scrollSnapAlign: "start" }}><ContactSection /></div>
+        <WorkSection />
+        <ServicesSection />
+        <AboutSection scrollToSection={scrollToSection} />
+        <ContactSection />
       </div>
 
       <style>{`
-        div::-webkit-scrollbar { display: none; }
+        [ref] ::-webkit-scrollbar { width: 4px; }
+        [ref] ::-webkit-scrollbar-track { background: transparent; }
+        [ref] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
       `}</style>
     </main>
   )
