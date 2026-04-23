@@ -165,14 +165,11 @@ export default function Index() {
           ))}
         </div>
 
-        <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
-          Контакт
-        </MagneticButton>
       </nav>
 
       {/* Dots navigation */}
       <div className={`fixed right-6 top-1/2 z-50 flex -translate-y-1/2 flex-col gap-2 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-        {[0, 1, 2, 3, 4].map((i) => (
+        {[0, 1, 2, 3].map((i) => (
           <button
             key={i}
             onClick={() => scrollToSection(i)}
@@ -250,7 +247,6 @@ export default function Index() {
         <WorkSection />
         <ServicesSection />
         <AboutSection scrollToSection={scrollToSection} />
-        <ContactSection />
       </div>
 
       <style>{`
